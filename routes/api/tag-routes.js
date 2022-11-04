@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
         }
     ]
 })
-    .then(tagData => res.json(tagData))
+    .then(data => res.json(data))
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
@@ -37,16 +37,16 @@ router.get('/:id', (req, res) => {
         }
     ]
 })
-    .then(tagData => {
-        if (!tagData) {
+    .then(data => {
+        if (!data) {
             res.status(404).json({ message: 'No tag found with this id' });
             return;
         }
-        res.json(tagData);
+        res.json(data);
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
@@ -55,10 +55,10 @@ router.post('/', (req, res) => {
   Tag.create({
     tag_name: req.body.tag_name
 })
-    .then(tagData => res.json(tagData))
+    .then(data => res.json(data))
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
@@ -69,16 +69,16 @@ router.put('/:id', (req, res) => {
         id: req.params.id
     }
 })
-    .then(tagData => {
-        if (!tagData[0]) {
+    .then(data => {
+        if (!data[0]) {
             res.status(404).json({ message: 'No tag found with this id' });
             return;
         }
-        res.json(tagData);
+        res.json(data);
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
@@ -89,16 +89,16 @@ router.delete('/:id', (req, res) => {
         id: req.params.id
     }
 })
-    .then(tagData => {
-        if (!tagData) {
+    .then(data => {
+        if (!data) {
             res.status(404).json({ message: 'No tag found with this id' });
             return;
         }
-        res.json(tagData);
+        res.json(data);
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
